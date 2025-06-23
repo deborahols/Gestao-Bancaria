@@ -68,7 +68,7 @@ describe('Validações no cadastro de pessoa', () => {
     cy.contains('O nome deve ter no mínimo 256 caracteres').should('be.visible')
  })
 
- it('4- Validar cadastro com campo CPF vazio', () => {
+ it.only('4- Validar cadastro com campo CPF vazio', () => {
    const emptyCpf = {
        nameField: faker.person.fullName().replace(/\./g, ''),
        enderecoField: faker.location.streetAddress()
@@ -83,7 +83,7 @@ describe('Validações no cadastro de pessoa', () => {
 
     cy.get('button[type="submit"]').click()
 
-    cy.contains('CPF é obrigatório').should('be.visible')
+    cy.contains('O CPF é obrigatório').should('be.visible')
  })
 
  it('5- Validar cadastro com CPF inválido', () => {
