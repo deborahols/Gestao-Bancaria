@@ -1,10 +1,12 @@
 import { faker } from '@faker-js/faker'
 import { generate } from 'gerador-validador-cpf'
+import { gerarPessoa } from '../support/utils'
 
 describe('Edição no Cadastro de pessoa', () => {
- 
+
  beforeEach(() => {
-    cy.visit('http://localhost:3000/pessoa')
+   cy.visit('http://localhost:3000/pessoa')
+   cy.cadPessoa(gerarPessoa()) // chama o comando personalizado para cadastrar a pessoa no sistema com os dados gerados.
     })
 
   it('1- Validar edição com campo Nome em branco', () => {

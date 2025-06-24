@@ -1,9 +1,6 @@
-import { faker } from '@faker-js/faker'
-import { generate } from 'gerador-validador-cpf'
-
-function formatarCPF(cpf) {
-  return cpf.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4');
-}
+import { faker } from '@faker-js/faker' // biblioteca para gerar dados aleatórios e realistas (nomes, endereços, e-mails etc.)
+import { generate } from 'gerador-validador-cpf' // função da biblioteca que cria um CPF válido e formatado.
+import { formatarCpf } from '../support/utils' // função para formatar o CPF com máscara e possibilitar ser encontrado no should
 
 describe('Cadastro de pessoa', () => {
   
@@ -21,12 +18,10 @@ describe('Cadastro de pessoa', () => {
 
     cy.cadPessoa(pessoa)
 
-    console.log("qualquer coisa ", pessoa.cpfField)
-
     cy.url().should('be.equal', 'http://localhost:3000/pessoa')
   
     cy.contains(pessoa.nameField).should('be.visible')
-    cy.contains(formatarCPF(pessoa.cpfField)).should('be.visible')
+    cy.contains(formatarCpf(pessoa.cpfField)).should('be.visible')
     cy.contains(pessoa.enderecoField).should('be.visible')
 
     cy.contains('Pessoa criada com sucesso').should('be.visible');

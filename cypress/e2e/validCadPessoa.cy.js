@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { generate } from 'gerador-validador-cpf'
 
-describe('Validações no cadastro de pessoa', () => {
+describe('Validações no Cadastro de Pessoa', () => {
  
  beforeEach(() => {
     cy.visit('http://localhost:3000/pessoa')
@@ -68,7 +68,7 @@ describe('Validações no cadastro de pessoa', () => {
     cy.contains('O nome deve ter no mínimo 256 caracteres').should('be.visible')
  })
 
- it.only('4- Validar cadastro com campo CPF vazio', () => {
+ it('4- Validar cadastro com campo CPF vazio', () => {
    const emptyCpf = {
        nameField: faker.person.fullName().replace(/\./g, ''),
        enderecoField: faker.location.streetAddress()
