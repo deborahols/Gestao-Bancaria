@@ -2,21 +2,51 @@ import { faker } from '@faker-js/faker'
 import { generate } from 'gerador-validador-cpf'
 
 describe('Exclusão de Cadastro de pessoa', () => {
-    let pessoa
+
  beforeEach(() => {
-    cy.visit('http://localhost:3000/pessoa')
+   cy.visit('http://localhost:3000/pessoa')
 })
 
   it('1- Validar cancelamento de exclusão', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-red-600').should('exist')
+   const cadNotDel = {
+      nameField: faker.person.fullName().replace(/\./g, ''),
+      cpfField: generate(),
+      enderecoField: faker.location.streetAddress()
+    }
+   cy.cadPessoa(cadNotDel)
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-red-600').click()
+    // Clica no botão de excluir da linha correspondente a essa pessoa
+   cy.contains(cadNotDel.nameField)
+      .parent() // pega a linha onde o nome está
+      .find('.text-red-600')
+      .click()
 
-   cy.contains('.MuiDialogContent-root > .flex > .bg-blue-600', 'Cancelar').click()
+   cy.contains('Cancelar').click()
 
-   cy.contains(pessoa.nameField).should('be.visible')
+   cy.contains(cadNotDel.nameField).should('be.visible');
+})
 
+  it('2- Validar confirmação de exclusão', () => {
+
+   const cadDel = {
+      nameField: faker.person.fullName().replace(/\./g, ''),
+      cpfField: generate(),
+      enderecoField: faker.location.streetAddress()
+    }
+   cy.cadPessoa(cadDel)
+
+    // Clica no botão de excluir da linha correspondente a essa pessoa
+   cy.contains(cadDel.nameField)
+      .parent() // pega a linha onde o nome está
+      .find('.text-red-600')
+      .click()
+
+   cy.contains('Excluir').click()
+
+   cy.contains(cadDel.nameField).should('not.exist')
+
+   cy.contains('Pessoa excluída com sucesso').should('be.visible')
 })
 
 })
