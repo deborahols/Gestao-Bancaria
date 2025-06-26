@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { generate } from 'gerador-validador-cpf'
-import { gerarPessoa } from '../support/utils'
+import { gerarPessoa } from '../../support/utils'
 
 describe('Edição no Cadastro de pessoa', () => {
 

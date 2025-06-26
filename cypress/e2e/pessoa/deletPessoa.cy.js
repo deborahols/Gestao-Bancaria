@@ -46,7 +46,11 @@ describe('Exclusão de Cadastro de pessoa', () => {
 
    cy.contains(cadDel.nameField).should('not.exist')
 
-   cy.contains('Pessoa excluída com sucesso').should('be.visible')
+   cy.contains('Pessoa excluída com sucesso', {timeout: 1000}).should('be.visible')
+})
+
+it('3- Validar exclusão de pessoa conta vinculada', () => {
+
 })
 
 })

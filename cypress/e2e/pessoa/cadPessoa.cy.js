@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker' // biblioteca para gerar dados aleatórios e realistas (nomes, endereços, e-mails etc.)
 import { generate } from 'gerador-validador-cpf' // função da biblioteca que cria um CPF válido e formatado.
-import { formatarCpf } from '../support/utils' // função para formatar o CPF com máscara e possibilitar ser encontrado no should
+import { formatarCpf } from '../../support/utils' // função para formatar o CPF com máscara e possibilitar ser encontrado no should
 
 describe('Cadastro de pessoa', () => {
   
