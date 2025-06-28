@@ -265,19 +265,24 @@ export default function Page() {
         <Table className="w-full max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden">
           <TableHead>
             <TableRow>
+              <TableCell>#</TableCell>
               <TableCell>Data</TableCell>
               <TableCell>Valor</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {movimentacoes?.map((item) => (
-              <MovimentacaoTableItem key={item.id} item={item} />
+            {movimentacoes?.map((item, index) => (
+              <MovimentacaoTableItem
+                key={item.id}
+                item={item}
+                length={++index}
+              />
             ))}
 
             {movimentacoes.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4}>
+                <TableCell colSpan={5}>
                   Nenhuma movimentação cadastrada
                 </TableCell>
               </TableRow>

@@ -198,6 +198,7 @@ export default function Page() {
         <Table className="w-full max-w-4xl bg-white shadow-lg rounded-xl overflow-hidden">
           <TableHead>
             <TableRow>
+              <TableCell>#</TableCell>
               <TableCell>Nome</TableCell>
               <TableCell>CPF</TableCell>
               <TableCell>Endereço</TableCell>
@@ -208,7 +209,7 @@ export default function Page() {
           </TableHead>
 
           <TableBody>
-            {pessoa?.map((item) => (
+            {pessoa?.map((item, index) => (
               <PessoaTableItem
                 key={item.id}
                 item={item}
@@ -216,13 +217,14 @@ export default function Page() {
                   setPessoaEdit(e);
                   reset(e);
                 }}
+                length={++index}
                 setPessoa={setPessoa}
               />
             ))}
 
             {pessoa.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4}>Nenhuma pessoa cadastrada</TableCell>
+                <TableCell colSpan={5}>Nenhuma pessoa cadastrada</TableCell>
               </TableRow>
             )}
           </TableBody>
