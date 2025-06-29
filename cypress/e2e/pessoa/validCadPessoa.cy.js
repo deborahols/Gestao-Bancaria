@@ -46,7 +46,7 @@ describe('Validações no Cadastro de Pessoa', () => {
     cy.contains('Nome em branco').should('be.visible')
  })
 
- it.only('3- Validar preenchimento com Nome acima do limite', () => {
+ it('3- Validar preenchimento com Nome acima do limite', () => {
     const bigName = {
        nameField: faker.string.alpha(256),
        cpfField: generate(),
