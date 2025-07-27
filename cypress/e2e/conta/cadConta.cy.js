@@ -13,6 +13,7 @@ describe ('Cadatro de Conta Bancaria', () => {
     cy.get('button[type="submit"]').click()
 
     cy.get('[href="/conta"]').click()
+    
     // abre o dropdown
     cy.get('#pessoaField').click()
 
