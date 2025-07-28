@@ -8,3 +8,17 @@ Cypress.Commands.add('cadPessoa', pessoa => {
   cy.get('button[type="submit"]').click()
 
 })
+
+Cypress.Commands.add('cadConta', conta => {
+
+  cy.get('[href="/conta"]').click()
+  cy.get('#pessoaField').click()
+  cy.get('ul li').eq(conta.pessoaField).click()
+  cy.get('#numeroContaField').type(conta.numeroContaField)
+  cy.get('button[type="submit"]').click()
+  cy.contains('Conta criada com sucesso!').should('be.visible')
+
+})
+
+
+

@@ -1,21 +1,31 @@
 import { faker } from '@faker-js/faker'
+import { gerarPessoa } from '../../support/utils'
 
 describe ('Exclusão de conta', () => {
 
     beforeEach(() => {
         cy.visit('http://localhost:3000/pessoa')
-        cy.get('[href="/conta"]').click()
+        cy.cadPessoa(gerarPessoa())
     })
 
    it('1- Conta excluída com sucesso', () => {
 
-    cy.get('#pessoaField').click()
+    const conta = {
+        pessoaField: 0,
+        numeroContaField: faker.string.numeric(17)
+    }
 
-    // seleciona a lista de opções, clica na opção pelo indice
-    cy.get('ul li').eq(0).click()
-    cy.get('#numeroContaField').type(faker.string.numeric(17))
-    cy.get('button[type="submit"]').click()
-    
-    })
+    cy.cadConta(conta)
+
+     cy.contains(conta.pessoaField)
+      .parent() // pega a linha onde o nome está
+      .find('.text-red-600')
+      .click()
+
+   cy.contains('Cancelar').click()
+
+   cy.contains(conta.pessoaField).should('be.visible');
+
+})
 
 })
