@@ -8,7 +8,32 @@ describe ('Cadatro de Conta Bancaria', () => {
         cy.cadPessoa(gerarPessoa())
     })
 
-    it('1- Conta criada com sucesso', () => {
+     it.only('1- Conta já existente', () => {
+
+    const contaDupli = faker.string.numeric(15);
+
+    cy.get('[href="/conta"]').click()
+    
+    // abre o dropdown
+    cy.get('#pessoaField').click()
+
+    // seleciona a lista de opções, clica na opção pelo indice
+    cy.get('ul li').eq(0).click()
+    cy.get('#numeroContaField').type(contaDupli)
+    cy.get('button[type="submit"]').click()
+
+    cy.contains('Conta criada com sucesso!').should('be.visible')
+
+    cy.get('#pessoaField').click()
+    cy.get('ul li').eq(0).click()
+    cy.get('#numeroContaField').type(contaDupli)
+    cy.get('button[type="submit"]').click()
+
+    cy.contains('Conta já cadastrada').should('be.visible')
+
+    })
+    
+    it('2- Conta criada com sucesso', () => {
    
     cy.get('button[type="submit"]').click()
 
@@ -19,7 +44,7 @@ describe ('Cadatro de Conta Bancaria', () => {
 
     // seleciona a lista de opções, clica na opção pelo indice
     cy.get('ul li').eq(0).click()
-    cy.get('#numeroContaField').type(faker.string.numeric(17))
+    cy.get('#numeroContaField').type(faker.string.numeric(15))
     cy.get('button[type="submit"]').click()
 
     cy.contains('Conta criada com sucesso!').should('be.visible')

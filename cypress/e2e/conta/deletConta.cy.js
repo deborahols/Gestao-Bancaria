@@ -11,20 +11,19 @@ describe ('Exclusão de conta', () => {
    it('1- Conta excluída com sucesso', () => {
 
     const conta = {
-        pessoaField: 0,
-        numeroContaField: faker.string.numeric(17)
+        numeroContaField: faker.string.numeric(15)
     }
 
     cy.cadConta(conta)
 
-     cy.contains(conta.pessoaField)
+     cy.contains(conta.numeroContaField)
       .parent() // pega a linha onde o nome está
       .find('.text-red-600')
       .click()
 
    cy.contains('Cancelar').click()
 
-   cy.contains(conta.pessoaField).should('be.visible');
+   cy.contains(conta.numeroContaField).should('be.visible');
 
 })
 

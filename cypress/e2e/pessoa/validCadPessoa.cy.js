@@ -197,7 +197,7 @@ describe('Validações no Cadastro de Pessoa', () => {
         nameField: faker.person.fullName().replace(/\./g, ''),
         cpfField: generate(),
         enderecoField: faker.location.streetAddress()
-  };
+  }
     // cadastro
     cy.get('#nameField').type(pessoaDupli.nameField);
     cy.get('#cpfField').type(pessoaDupli.cpfField);
