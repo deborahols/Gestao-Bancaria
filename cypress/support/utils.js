@@ -12,3 +12,11 @@ export function gerarPessoa() {
     enderecoField: faker.location.streetAddress()
   }
 }
+
+export function gerarConta() {
+  return {
+    pessoaField: 0,
+    numeroContaField: faker.string.numeric(15)
+  }
+}
+

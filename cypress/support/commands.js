@@ -10,7 +10,7 @@ Cypress.Commands.add('cadPessoa', pessoa => {
 })
 
 Cypress.Commands.add('cadConta', conta => {
-
+  
   cy.get('[href="/conta"]').click()
   cy.get('#pessoaField').click()
   cy.get('ul li').eq(0).click()
@@ -19,6 +19,7 @@ Cypress.Commands.add('cadConta', conta => {
   cy.contains('Conta criada com sucesso!').should('be.visible')
 
 })
+
 
 
 
