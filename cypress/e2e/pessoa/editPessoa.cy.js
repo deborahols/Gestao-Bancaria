@@ -11,10 +11,9 @@ describe('Edição no Cadastro de pessoa', () => {
 
   it('1- Validar edição com campo Nome em branco', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
    
    cy.get('#nameField').clear('#nameField')
 
@@ -25,10 +24,9 @@ describe('Edição no Cadastro de pessoa', () => {
 
 it('2- Validar edição com alteração no nome', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
    
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
 
    cy.get('#nameField').clear().type('Teste da Silva')
 
@@ -39,10 +37,9 @@ it('2- Validar edição com alteração no nome', () => {
 
  it('3- Validar edição com campo CPF em branco', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+  cy.get('.text-blue-600').first().click()
 
    cy.get('#cpfField').clear()
 
@@ -53,10 +50,9 @@ it('2- Validar edição com alteração no nome', () => {
 
  it('4- Validar edição com alteração no CPF', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
 
    cy.get('#cpfField').clear().type(generate())
 
@@ -67,10 +63,9 @@ it('2- Validar edição com alteração no nome', () => {
 
  it('5- Validar edição com campo Endereço em branco', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
 
    cy.get('#enderecoField').clear()
 
@@ -81,10 +76,9 @@ it('2- Validar edição com alteração no nome', () => {
 
  it('6- Validar edição com alteração de endereço', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
 
    cy.get('#enderecoField').clear().type(faker.location.streetAddress())
 
@@ -95,10 +89,9 @@ it('2- Validar edição com alteração no nome', () => {
 
 it('7- Validar edição com todos os campos em branco', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
 
    cy.get('#nameField').clear()
    cy.get('#cpfField').clear()
@@ -113,10 +106,9 @@ it('7- Validar edição com todos os campos em branco', () => {
 
  it('8- Validar edição de todos os campos', () => {
 
-   cy.get(':nth-child(1) > :nth-child(4) > .text-blue-600 > [data-testid="EditIcon"]').as('btnEdit')
    cy.get('button[type="submit"]').as('btnSave')
 
-   cy.get('@btnEdit').click()
+   cy.get('.text-blue-600').first().click()
 
    cy.get('#enderecoField').clear().type(faker.person.fullName().replace(/\./g, ''))
    cy.get('#enderecoField').clear().type(generate())
