@@ -4,7 +4,6 @@ import { gerarPessoa, gerarConta } from '../../support/utils'
 describe ('Exclusão de conta', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:3000/pessoa')
         cy.cadPessoa(gerarPessoa())
         cy.cadConta(gerarConta())
     })
