@@ -8,11 +8,21 @@ describe ('Cadatro de Conta Bancaria', () => {
         cy.cadPessoa(gerarPessoa())
     })
 
-     it.only('1- Conta já existente', () => {
+     it('1- Campos em branco', () => {
+
+    cy.get('[href="/conta"]',).click()
+    cy.contains('Cadastro de Conta').should('be.visible')
+    cy.get('button[type="submit"]').click()
+    cy.contains('A pessoa é obrigatória').should('be.visible')
+    cy.contains('O número da conta é obrigatório').should('be.visible')
+    })
+
+    it('2- Conta já existente', () => {
 
     const contaDupli = faker.string.numeric(15);
 
     cy.get('[href="/conta"]').click()
+    cy.contains('Cadastro de Conta').should('be.visible')
     
     // abre o dropdown
     cy.get('#pessoaField').click()
@@ -30,14 +40,13 @@ describe ('Cadatro de Conta Bancaria', () => {
     cy.get('button[type="submit"]').click()
 
     cy.contains('Conta já cadastrada').should('be.visible')
-
     })
     
-    it('2- Conta criada com sucesso', () => {
+    it('3- Conta criada com sucesso', () => {
    
     cy.get('button[type="submit"]').click()
-
     cy.get('[href="/conta"]').click()
+    cy.contains('Cadastro de Conta').should('be.visible')
     
     // abre o dropdown
     cy.get('#pessoaField').click()

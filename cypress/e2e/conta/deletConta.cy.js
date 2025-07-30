@@ -4,6 +4,7 @@ import { gerarPessoa, gerarConta } from '../../support/utils'
 describe ('Exclusão de conta', () => {
 
     beforeEach(() => {
+        cy.visit('http://localhost:3000/pessoa')
         cy.cadPessoa(gerarPessoa())
         cy.cadConta(gerarConta())
     })
@@ -20,7 +21,7 @@ describe ('Exclusão de conta', () => {
       .parent() // pega a linha onde o nome está
       .find('.text-red-600')
       .click()
-
+      
     cy.contains('Cancelar').click()
 
     cy.contains(conta.numeroContaField).should('be.visible')
