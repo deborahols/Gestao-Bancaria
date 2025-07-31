@@ -11,7 +11,7 @@ describe('Cadastro de movimentação', () => {
 
     it('1- Movimentação com campos em branco', () => {
 
-         cy.get('[href="/movimentacao"]',).click()
+        cy.get('[href="/movimentacao"]',).click()
 
         cy.contains('Cadastro de Movimentação').should('be.visible')
 
@@ -25,7 +25,7 @@ describe('Cadastro de movimentação', () => {
 
     it('2- Deposito cadastrado com sucesso', () => {
 
-         cy.get('[href="/movimentacao"]',).click()
+        cy.get('[href="/movimentacao"]',).click()
 
         cy.contains('Cadastro de Movimentação').should('be.visible')
 
@@ -43,7 +43,7 @@ describe('Cadastro de movimentação', () => {
 
     it('3- Saque realizado com sucesso', () => {
 
-         cy.get('[href="/movimentacao"]',).click()
+        cy.get('[href="/movimentacao"]',).click()
 
         cy.contains('Cadastro de Movimentação').should('be.visible')
 
@@ -57,6 +57,11 @@ describe('Cadastro de movimentação', () => {
         cy.get('button[type="submit"]').click()
 
         cy.contains('Movimentacão criada com sucesso!').should('be.visible')
+    })
+
+    it('4 - Consulta de Extrato', () => {
+
+
     })
 
 })

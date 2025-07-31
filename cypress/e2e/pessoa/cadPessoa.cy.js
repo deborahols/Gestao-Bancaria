@@ -9,22 +9,23 @@ describe('Cadastro de pessoa', () => {
 
   })
   
-  it('1- Pessoa criada com sucesso', () => {
-    const pessoa = {
-      nameField: faker.person.fullName().replace(/\./g, ''),
-      cpfField: generate(),
-      enderecoField: faker.location.streetAddress()
-    }
+    it('1- Pessoa criada com sucesso', () => {
+      
+      const pessoa = {
+        nameField: faker.person.fullName().replace(/\./g, ''),
+        cpfField: generate(),
+        enderecoField: faker.location.streetAddress()
+      }
 
-    cy.cadPessoa(pessoa)
+        cy.cadPessoa(pessoa)
 
-    cy.url().should('be.equal', 'http://localhost:3000/pessoa')
-  
-    cy.contains(pessoa.nameField).should('be.visible')
-    cy.contains(formatarCpf(pessoa.cpfField)).should('be.visible')
-    cy.contains(pessoa.enderecoField).should('be.visible')
+        cy.url().should('be.equal', 'http://localhost:3000/pessoa')
+      
+        cy.contains(pessoa.nameField).should('be.visible')
+        cy.contains(formatarCpf(pessoa.cpfField)).should('be.visible')
+        cy.contains(pessoa.enderecoField).should('be.visible')
 
-    cy.contains('Pessoa criada com sucesso').should('be.visible');
+        cy.contains('Pessoa criada com sucesso').should('be.visible');
     
-  })
+    })
 })
