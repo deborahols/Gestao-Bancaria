@@ -59,7 +59,25 @@ describe('Cadastro de movimentação', () => {
             cy.contains('Movimentacão criada com sucesso!').should('be.visible')
         })
 
-        it('4 - Consulta de Extrato de depositos', () => {
+        it('4 - Saque maior do que o valor em conta', () => {
+
+            cy.get('[href="/movimentacao"]',).click()
+
+            cy.contains('Cadastro de Movimentação').should('be.visible')
+
+            cy.get('#pessoaField').click()
+            cy.get('ul li').eq(1).click()
+            cy.get('#numeroContaField').click()
+            cy.get('ul li').eq(1).click()
+            cy.get('#tipoField').click()
+            cy.get('ul li').eq(2).click()
+            cy.get('#valorField').type(faker.string.numeric(7))
+            cy.get('button[type="submit"]').click()
+
+            cy.contains('Saldo insuficiente para saque.').should('be.visible')
+        })
+
+        it('5 - Consulta de Extrato de depositos', () => {
 
             cy.get('[href="/movimentacao"]',).click()
 
@@ -73,7 +91,7 @@ describe('Cadastro de movimentação', () => {
             cy.get('table').contains('R$').should('exist')
         })
 
-        it('5 - Consulta de Extrato de saques', () => {
+        it('6 - Consulta de Extrato de saques', () => {
 
             cy.get('[href="/movimentacao"]',).click()
 
