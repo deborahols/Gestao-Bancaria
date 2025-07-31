@@ -59,9 +59,32 @@ describe('Cadastro de movimentação', () => {
             cy.contains('Movimentacão criada com sucesso!').should('be.visible')
         })
 
-        it('4 - Consulta de Extrato', () => {
+        it('4 - Consulta de Extrato de depositos', () => {
 
+            cy.get('[href="/movimentacao"]',).click()
 
+            cy.contains('Cadastro de Movimentação').should('be.visible')
+
+            cy.get('#pessoaField').click()
+            cy.get('ul li').eq(1).click()
+            cy.get('#numeroContaField').click()
+            cy.get('ul li').eq(1).click()
+
+            cy.get('table').contains('R$').should('exist')
+        })
+
+        it('5 - Consulta de Extrato de saques', () => {
+
+            cy.get('[href="/movimentacao"]',).click()
+
+            cy.contains('Cadastro de Movimentação').should('be.visible')
+
+            cy.get('#pessoaField').click()
+            cy.get('ul li').eq(1).click()
+            cy.get('#numeroContaField').click()
+            cy.get('ul li').eq(1).click()
+            
+            cy.get('table').contains('-R$').should('exist')
         })
 
 })
