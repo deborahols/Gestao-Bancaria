@@ -4,7 +4,6 @@ Cypress.Commands.add('cadPessoa', pessoa => {
   cy.get('#cpfField').type(pessoa.cpfField)
   cy.get('#enderecoField').type(pessoa.enderecoField)
   cy.get('button[type="submit"]').click()
-
 })
 
 Cypress.Commands.add('cadConta', conta => {
@@ -15,7 +14,6 @@ Cypress.Commands.add('cadConta', conta => {
   cy.get('#numeroContaField').type(conta.numeroContaField)
   cy.get('button[type="submit"]').click()
   cy.contains('Conta criada com sucesso!').should('be.visible')
-
 })
 
 
